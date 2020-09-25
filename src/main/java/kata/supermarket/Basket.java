@@ -47,7 +47,8 @@ public class Basket {
          *  which provides that functionality.
          */
         private BigDecimal discounts() {
-            return BigDecimal.ZERO;
+            Discounts discounts = new Discounts(items);
+            return discounts.calculate();
         }
 
         private BigDecimal calculate() {

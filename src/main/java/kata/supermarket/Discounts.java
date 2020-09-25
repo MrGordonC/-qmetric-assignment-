@@ -26,7 +26,7 @@ public class Discounts {
         return mapOfItemsByUnit;
     }
 
-    public BigDecimal calculateDiscount(){
+    public BigDecimal calculate(){
         BigDecimal discountTotal = BigDecimal.valueOf(0, 2);
         HashMap<String, Offer> discountedOffers = discountedOffersMap();
         Map<String, List<Item>> itemCategoryMap = itemByCategory();
