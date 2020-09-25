@@ -26,6 +26,19 @@ public class Discounts {
         return mapOfItemsByUnit;
     }
 
+    public BigDecimal calculateDiscount(){
+        BigDecimal discountTotal = BigDecimal.valueOf(0, 2);
+        HashMap<String, Offer> discountedOffers = discountedOffersMap();
+        Map<String, List<Item>> itemCategoryMap = itemByCategory();
+        for(String productType: itemCategoryMap.keySet()) {
+            if(discountedOffers.containsKey(productType) && itemCategoryMap.get(productType).size() > 1) {
+                Offer offer = discountedOffers.get(productType);
+                discountTotal = discountTotal.add(offer.apply(itemCategoryMap.get(productType)));
+            }
+        }
+        return discountTotal;
+    }
+
     public HashMap<String, Offer> discountedOffersMap(){
         HashMap<String, Offer> discountedOffers = new HashMap<>();
         discountedOffers.put("sweet", new DiscountPerKilo());
