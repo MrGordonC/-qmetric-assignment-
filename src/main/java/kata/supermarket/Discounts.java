@@ -39,7 +39,7 @@ public class Discounts {
         return discountTotal;
     }
 
-    public HashMap<String, Offer> discountedOffersMap(){
+    private static HashMap<String, Offer> discountedOffersMap(){
         HashMap<String, Offer> discountedOffers = new HashMap<>();
         discountedOffers.put("sweet", new DiscountPerKilo());
         return discountedOffers;
