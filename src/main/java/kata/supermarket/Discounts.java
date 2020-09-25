@@ -26,11 +26,10 @@ public class Discounts {
         return mapOfItemsByUnit;
     }
 
-    public Set<String> discountedOffers(){
-        HashSet<String> discountedOffers = new HashSet<>();
-        discountedOffers.add("sweet");
+    public HashMap<String, Offer> discountedOffersMap(){
+        HashMap<String, Offer> discountedOffers = new HashMap<>();
+        discountedOffers.put("sweet", new DiscountPerKilo());
         return discountedOffers;
     }
-
 
 }
