@@ -31,7 +31,7 @@ public class Discounts {
         HashMap<String, Offer> discountedOffers = discountedOffersMap();
         Map<String, List<Item>> itemCategoryMap = itemByCategory();
         for(String productType: itemCategoryMap.keySet()) {
-            if(discountedOffers.containsKey(productType) && itemCategoryMap.get(productType).size() > 1) {
+            if(discountedOffers.containsKey(productType)) {
                 Offer offer = discountedOffers.get(productType);
                 discountTotal = discountTotal.add(offer.apply(itemCategoryMap.get(productType)));
             }

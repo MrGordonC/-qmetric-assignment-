@@ -30,7 +30,8 @@ class BasketTest {
                 multipleItemsPricedPerUnit(),
                 aSingleItemPricedByWeight(),
                 multipleItemsPricedByWeight(),
-                multipleItemsPricedByWeightWhereDiscount()
+                multipleItemsPricedByWeightWhereDiscount(),
+                oneItemPricedByWeightWhereDiscount()
         );
     }
 
@@ -45,8 +46,14 @@ class BasketTest {
     }
 
     private static Arguments multipleItemsPricedByWeightWhereDiscount() {
-        return Arguments.of("multiple weighed items with a discount per kilo", "0.85",
+        return Arguments.of("multiple weighed items with a discount per kilo", "4.84",
                 Arrays.asList(twoFiftyGramsOfAmericanSweets(), twoHundredGramsOfPickAndMix(), eightHundredGramsOfAmericanSweets())
+        );
+    }
+
+    private static Arguments oneItemPricedByWeightWhereDiscount() {
+        return Arguments.of("one weighed items with a discount per kilo", "7.98",
+                Arrays.asList(twoKilogramsOfAmericanSweets())
         );
     }
 
@@ -81,6 +88,10 @@ class BasketTest {
 
     private static Item eightHundredGramsOfAmericanSweets() {
         return aKiloOfAmericanSweets().weighing(new BigDecimal("0.80"));
+    }
+
+    private static Item twoKilogramsOfAmericanSweets() {
+        return aKiloOfAmericanSweets().weighing(new BigDecimal("2"));
     }
 
     private static WeighedProduct aKiloOfPickAndMix() {

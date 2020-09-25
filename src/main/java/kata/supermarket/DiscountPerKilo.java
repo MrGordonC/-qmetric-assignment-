@@ -12,12 +12,12 @@ public class DiscountPerKilo implements Offer{
     public BigDecimal apply(List<Item> items) {
         BigDecimal discountTotal = BigDecimal.valueOf(0, 2);
         double remainingWeightToApplyDiscount = 0;
-        BigDecimal newPricePerKilo = BigDecimal.valueOf(0, 2);
+        BigDecimal newPricePerKilo = BigDecimal.valueOf(1.00);
         for (Item item : items) {
             ItemByWeight itemByWeight = (ItemByWeight) item;
             remainingWeightToApplyDiscount += itemByWeight.getWeightInKilos().doubleValue();
             WeighedProduct weighedProduct = (WeighedProduct) item.product();
-            newPricePerKilo = newPricePerKilo.max(weighedProduct.pricePerKilo());
+            newPricePerKilo = newPricePerKilo.min(weighedProduct.pricePerKilo());
         }
 
         while (remainingWeightToApplyDiscount >= 1.0) {
